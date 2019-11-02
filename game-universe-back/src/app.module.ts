@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CompetitionEntity } from './competition/competition.entity';
+import { CompetitionModule } from './competition/competition.module';
 
 
 @Module({
@@ -14,10 +16,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     password: "a13806713fe574ff9dfa2288840c12ca9f66ab2579e851341a8ce87c4e2ce15c",
     port: 5432,
     ssl: true,
-    entities: [],
-    synchronize: false
-
-  })],
+    entities: [CompetitionEntity],
+    synchronize: true
+  }),
+    CompetitionModule],
   controllers: [AppController],
   providers: [AppService],
 })

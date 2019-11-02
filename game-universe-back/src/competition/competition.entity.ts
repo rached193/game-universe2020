@@ -1,14 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn} from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('competition')
 export class CompetitionEntity {
-    @PrimaryGeneratedColumn('serial')
+    @PrimaryGeneratedColumn('increment')
     id: number
 
     @Column('integer')
     account: number
 
-    @Column('character varying', { length: 50, unique: true})
+    @Column('character varying', { length: 50, unique: true })
     name: string
 
     @Column('integer')
