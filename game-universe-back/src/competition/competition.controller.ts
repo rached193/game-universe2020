@@ -8,15 +8,13 @@ import { CompetitionEntity } from './competition.entity';
 		type: CompetitionEntity
 	},
 	params: {
-		id: {
-			field: 'id',
+		account: {
+			field: 'account',
 			type: 'number',
-			primary: true
+			primary: false
 		}
 	}
 })
-
-
 
 @Controller('competition')
 export class CompetitionController {

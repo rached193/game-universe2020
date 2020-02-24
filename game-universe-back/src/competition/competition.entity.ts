@@ -9,20 +9,24 @@ export class CompetitionEntity {
     @IsNotEmpty()
     @Column('integer')
     account: number
-
+ 
     @IsNotEmpty()
-    @Column('character varying', { length: 50, unique: true })
+    @Column('character varying', { length: 100, unique: true })
     name: string
 
+    @IsNotEmpty()
     @Column('integer')
     format: number
 
+    @IsNotEmpty()
     @Column('integer')
     bo: number
 
+    @IsNotEmpty()
     @Column('integer')
     competitors: number
 
+    @IsNotEmpty()
     @Column('integer')
     status: number
 }
