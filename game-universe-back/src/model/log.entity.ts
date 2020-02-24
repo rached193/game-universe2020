@@ -7,15 +7,18 @@ export class LogEntity {
 
     @Column({
         type: 'character',
-        length: 1})
+        length: 1
+    })
     log_type: string
 
     @Column({
-        type: 'text'})
+        type: 'text'
+    })
     log_info: string
 
     @Column({
         type: 'timestamp without time zone',
-        nullable: false})
+        nullable: false
+    })
     log_time: string
 }

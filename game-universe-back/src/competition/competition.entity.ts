@@ -1,10 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 
 @Entity('competition')
 export class CompetitionEntity {
     @PrimaryGeneratedColumn('increment')
-    id: number
+    id: number;
 
     @IsNotEmpty()
     @Column('integer')
@@ -16,17 +16,17 @@ export class CompetitionEntity {
 
     @IsNotEmpty()
     @Column('integer')
-    format: number
+    format: number;
 
     @IsNotEmpty()
     @Column('integer')
-    bo: number
+    bo: number;
 
     @IsNotEmpty()
     @Column('integer')
-    competitors: number
+    competitors: number;
 
     @IsNotEmpty()
     @Column('integer')
-    status: number
+    status: number;
 }
