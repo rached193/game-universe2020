@@ -10,12 +10,14 @@ export class FormatEntity {
         type: 'character varying',
         length: 50,
         nullable: false,
-        unique: true})
+        unique: true
+    })
     name: string
 
     @Column({
         type: 'boolean',
-        nullable: false})
+        nullable: false
+    })
     enabled: boolean
 
     @OneToMany(type => CompetitionEntity, competition => competition.account)

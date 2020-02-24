@@ -9,7 +9,7 @@ import { CompetitionEntity } from './competition.entity';
   providers: [CompetitionService],
   controllers: [CompetitionController],
   imports: [
-    TypeOrmModule.forFeature([CompetitionEntity])
-  ]
+    TypeOrmModule.forFeature([CompetitionEntity]),
+  ],
 })
 export class CompetitionModule { }

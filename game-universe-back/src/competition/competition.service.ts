@@ -5,8 +5,13 @@ import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
+// export class CompetitionService extends TypeOrmCrudService<CompetitionEntity> {
 export class CompetitionService extends TypeOrmCrudService<CompetitionEntity> {
-	constructor(@InjectRepository(CompetitionEntity) repo: Repository<CompetitionEntity>) {
-		super(repo)
-	}
+  constructor(@InjectRepository(CompetitionEntity) repo: Repository<CompetitionEntity>) {
+    super(repo);
+  }
+
+  findAll(): Promise<CompetitionEntity[]> {
+    return this.repo.find();
+  }
 }
