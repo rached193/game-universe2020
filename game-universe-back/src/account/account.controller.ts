@@ -13,8 +13,10 @@ export class AccountController {
     }
 
     @Post()
-    create(@Body() account: AccountEntity) {
-        const res = this.service.create(account);
+    save(@Body() account: AccountEntity) {
+        account.enabled = true;
+        const res = this.service.insert(account);
+        console.log(res);
         return res;
     }
 
