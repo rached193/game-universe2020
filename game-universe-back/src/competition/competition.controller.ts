@@ -19,15 +19,16 @@ import { CompetitionEntity } from './competition.entity';
 @Controller('competition')
 // export class CompetitionController implements CrudController<CompetitionEntity> {
 export class CompetitionController {
-	constructor(public service: CompetitionService) { }
+  constructor(private service: CompetitionService) { }
 
-	@Get()
-	findAll(): Promise<CompetitionEntity[]> {
-		return this.service.findAll();
-	}
+  @Get()
+  findAll(): Promise<CompetitionEntity[]> {
+    return this.service.findAll();
+  }
 
-	@Get(':id')
-	findOne(@Param() params): Promise<CompetitionEntity> {
-		return this.service.findOne(params.id);
-	}
+  //   @Get(':id')
+  //   findOne(@Param() params): Promise<CompetitionEntity> {
+  //     return this.service.findOne(params.id);
+  //   }
 }
+

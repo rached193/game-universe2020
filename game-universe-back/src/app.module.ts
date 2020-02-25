@@ -4,7 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CompetitionEntity } from './competition/competition.entity';
 import { CompetitionModule } from './competition/competition.module';
-
+import { AccountModule } from './account/account.module';
+import { AccountEntity } from './account/account.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,10 +17,11 @@ import { CompetitionModule } from './competition/competition.module';
     password: 'a13806713fe574ff9dfa2288840c12ca9f66ab2579e851341a8ce87c4e2ce15c',
     port: 5432,
     ssl: true,
-    entities: [CompetitionEntity],
+    entities: [CompetitionEntity, AccountEntity],
     synchronize: true,
   }),
-    CompetitionModule],
+    CompetitionModule,
+    AccountModule],
   controllers: [AppController],
   providers: [AppService],
 })

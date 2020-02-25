@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
+import { AccountEntity } from 'src/account/account.entity';
 
 @Entity('competition')
 export class CompetitionEntity {
@@ -7,12 +8,12 @@ export class CompetitionEntity {
     id: number;
 
     @IsNotEmpty()
-    @Column('integer')
-    account: number
- 
+    @ManyToOne(type => AccountEntity, account => account.competitions)
+    account: AccountEntity;
+
     @IsNotEmpty()
     @Column('character varying', { length: 100, unique: true })
-    name: string
+    name: string;
 
     @IsNotEmpty()
     @Column('integer')

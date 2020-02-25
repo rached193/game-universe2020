@@ -5,7 +5,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CompetitionEntity } from './competition.entity';
 
 @Module({
-
   providers: [CompetitionService],
   controllers: [CompetitionController],
   imports: [

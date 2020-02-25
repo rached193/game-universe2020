@@ -6,9 +6,8 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 // export class CompetitionService extends TypeOrmCrudService<CompetitionEntity> {
-export class CompetitionService extends TypeOrmCrudService<CompetitionEntity> {
-  constructor(@InjectRepository(CompetitionEntity) repo: Repository<CompetitionEntity>) {
-    super(repo);
+export class CompetitionService {
+  constructor(@InjectRepository(CompetitionEntity) private repo: Repository<CompetitionEntity>) {
   }
 
   findAll(): Promise<CompetitionEntity[]> {
