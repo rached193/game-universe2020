@@ -1,24 +1,36 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
-import { RoundEntity } from './round.entity';
+import { RoundEntity } from 'src/model/round.entity';
+import { GameEntity } from 'src/model/game.entity';
 
 @Entity('match')
 export class MatchEntity {
     @PrimaryGeneratedColumn('increment')
-    id: number
+    id: number;
 
-    /*@IsNotEmpty()
+    @IsNotEmpty()
+    @ManyToOne(type => RoundEntity, round => round.matches)
+    round: RoundEntity;
+
+    @IsNotEmpty()
     @Column('integer')
-    round: number*/
-    /*@ManyToOne(type => RoundEntity, round => round.matches)
-    round: RoundEntity;*/
+    match_num: number;
 
-    /*@IsNotEmpty()*/
+    @IsNotEmpty()
     @Column('integer')
-    match: number
+    competitor_l: number;
 
-    
+    @IsNotEmpty()
+    @Column('integer')
+    competitor_v: number;
 
     @Column('integer')
-    status: number
+    winner: number;
+
+    @IsNotEmpty()
+    @Column('integer')
+    status: number;
+
+    @OneToMany(type => GameEntity, game => game.match)
+    games: GameEntity[];
 }

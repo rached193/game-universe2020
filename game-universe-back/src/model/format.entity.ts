@@ -1,25 +1,19 @@
-// import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm'
-// import { CompetitionEntity } from './competition.entity'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { IsNotEmpty } from 'class-validator';
+import { CompetitionEntity } from 'src/model/competition.entity';
 
-// @Entity('format')
-// export class FormatEntity {
-//     @PrimaryColumn('integer')
-//     id: number
+@Entity('format')
+export class FormatEntity {
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
-//     @Column({
-//         type: 'character varying',
-//         length: 50,
-//         nullable: false,
-//         unique: true
-//     })
-//     name: string
+    @IsNotEmpty()
+    @Column('character varying', { length: 50, unique: true })
+    name: string;
 
-//     @Column({
-//         type: 'boolean',
-//         nullable: false
-//     })
-//     enabled: boolean
+    @Column('boolean')
+    enabled: boolean;
 
-//     @OneToMany(type => CompetitionEntity, competition => competition.account)
-//     competitions: CompetitionEntity[]
-// }
+    @OneToMany(type => CompetitionEntity, competition => competition.format)
+    competitions: CompetitionEntity[];
+}
