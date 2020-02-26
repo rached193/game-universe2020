@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { CompetitionService } from './competition.service';
-import { CompetitionController } from './competition.controller';
+import { CompetitionService } from './competition/competition.service';
+import { CompetitionController } from './competition/competition.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CompetitionEntity } from './competition.entity';
+import { CompetitionEntity } from './entities/competition.entity';
 
 @Module({
   providers: [CompetitionService],

@@ -15,9 +15,7 @@ export class AccountController {
     @Post()
     save(@Body() account: AccountEntity) {
         account.enabled = true;
-        const res = this.service.insert(account);
-        console.log(res);
-        return res;
+        return this.service.insert(account);
     }
 
 }

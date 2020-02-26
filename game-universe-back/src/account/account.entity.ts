@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
-import { CompetitionEntity } from 'src/competition/competition.entity';
+import { CompetitionEntity } from 'src/competition/entities/competition.entity';
 
 @Entity('account')
 export class AccountEntity {

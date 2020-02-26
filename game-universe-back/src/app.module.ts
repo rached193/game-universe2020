@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CompetitionEntity } from './competition/competition.entity';
+import { CompetitionEntity } from './competition/entities/competition.entity';
 import { CompetitionModule } from './competition/competition.module';
 import { AccountModule } from './account/account.module';
 import { AccountEntity } from './account/account.entity';
