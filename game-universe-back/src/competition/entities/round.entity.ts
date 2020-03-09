@@ -1,26 +1,32 @@
-// import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-// import { IsNotEmpty } from 'class-validator';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+import { IsNotEmpty } from 'class-validator';
 
-// import { MatchEntity } from 'src/competition/entities/match.entity';
-// import { CompetitionEntity } from './entities/competition.entity';
+import { MatchEntity } from 'src/competition/entities/match.entity';
+import { CompetitionEntity } from 'src/competition/entities/competition.entity';
 
-// @Entity('round')
-// export class RoundEntity {
-//     @PrimaryGeneratedColumn('increment')
-//     id: number;
+export enum StatusRound {
+    INACTIVE = 1, // La ronda está inactiva
+    ACTIVE = 2, // La ronda está activa
+    FINISHED = 3, // La ronda ha finalizado
+  }
 
-//     @IsNotEmpty()
-//     @ManyToOne(type => CompetitionEntity, competition => competition.rounds)
-//     competition: CompetitionEntity;
+@Entity('round')
+export class RoundEntity {
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
-//     @IsNotEmpty()
-//     @Column('integer')
-//     roundNum: number;
+    @IsNotEmpty()
+//    @ManyToOne(type => CompetitionEntity, competition => competition.rounds)
+    competition: CompetitionEntity;
 
-//     @IsNotEmpty()
-//     @Column('integer')
-//     status: number;
+    @IsNotEmpty()
+    @Column('integer')
+    roundNum: number;
 
-//     @OneToMany(type => MatchEntity, match => match.round)
-//     matches: MatchEntity[];
-// }
+    @IsNotEmpty()
+    @Column('integer')
+    status: StatusRound;
+
+    @OneToMany(type => MatchEntity, match => match.round)
+    matches: MatchEntity[];
+}

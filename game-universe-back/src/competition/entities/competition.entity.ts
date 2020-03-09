@@ -1,13 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 import { AccountEntity } from 'src/account/account.entity';
+import { RoundEntity } from 'src/competition/entities/round.entity';
 
 export enum StatusCompetition {
     CREATE = 1, // La competición está siendo configurada
     CONFIG = 2, // Los participantes están siendo configurados
-    C = 3, // Se están configurando los próximos enfrentamientos
-    D = 4, // La competición está activa
-    E = 5, // La competición ha finalizado
+    PAIRING = 3, // Se están configurando los próximos enfrentamientos
+    ACTIVE = 4, // La competición está activa
+    FINISHED = 5 // La competición ha finalizado
   }
 
 @Entity('competition')
@@ -33,9 +34,12 @@ export class CompetitionEntity {
 
     @IsNotEmpty()
     @Column('integer')
-    competitors: number;
+    competitorsNum: number;
 
     @IsNotEmpty()
     @Column('integer')
     status: StatusCompetition;
+
+//    @OneToMany(type => RoundEntity, round => round.competition)
+//    rounds: RoundEntity[];
 }

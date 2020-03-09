@@ -1,24 +1,30 @@
-// import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-// import { IsNotEmpty } from 'class-validator';
-// import { MatchEntity } from 'src/competition/entities/match.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+import { IsNotEmpty } from 'class-validator';
+import { MatchEntity } from './match.entity';
 
-// @Entity('game')
-// export class GameEntity {
-//     @PrimaryGeneratedColumn('increment')
-//     id: number;
+export enum StatusGame {
+    INACTIVE = 1, // La partida está inactiva
+    ACTIVE = 2, // La partida está activa
+    FINISHED = 3, // La partida ha finalizado
+  }
 
-//     @IsNotEmpty()
-//     @ManyToOne(type => MatchEntity, match => match.games)
-//     match: MatchEntity;
+@Entity('game')
+export class GameEntity {
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
-//     @IsNotEmpty()
-//     @Column('integer')
-//     game_num: number;
+    @IsNotEmpty()
+    @ManyToOne(type => MatchEntity, match => match.games)
+    match: MatchEntity;
 
-//     @Column('integer')
-//     winner: number;
+    @IsNotEmpty()
+    @Column('integer')
+    gameNum: number;
 
-//     @IsNotEmpty()
-//     @Column('integer')
-//     status: number;
-// }
+    @Column('integer')
+    winner: number;
+
+    @IsNotEmpty()
+    @Column('integer')
+    status: StatusGame;
+}

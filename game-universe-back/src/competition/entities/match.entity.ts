@@ -1,36 +1,42 @@
-// import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-// import { IsNotEmpty } from 'class-validator';
-// import { RoundEntity } from 'src/competition/round.entity';
-// import { GameEntity } from 'src/competition/entities/game.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+import { IsNotEmpty } from 'class-validator';
+import { RoundEntity, StatusRound } from './round.entity';
+import { GameEntity } from './game.entity';
 
-// @Entity('match')
-// export class MatchEntity {
-//     @PrimaryGeneratedColumn('increment')
-//     id: number;
+export enum StatusMatch {
+    INACTIVE = 1, // El enfrentamiento está inactivo
+    ACTIVE = 2, // El enfrentamiento está activo
+    FINISHED = 3, // El enfrentamiento ha finalizado
+  }
 
-//     @IsNotEmpty()
-//     @ManyToOne(type => RoundEntity, round => round.matches)
-//     round: RoundEntity;
+@Entity('match')
+export class MatchEntity {
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
-//     @IsNotEmpty()
-//     @Column('integer')
-//     match_num: number;
+    @IsNotEmpty()
+    @ManyToOne(type => RoundEntity, round => round.matches)
+    round: RoundEntity;
 
-//     @IsNotEmpty()
-//     @Column('integer')
-//     competitor_l: number;
+    @IsNotEmpty()
+    @Column('integer')
+    matchNum: number;
 
-//     @IsNotEmpty()
-//     @Column('integer')
-//     competitor_v: number;
+    @IsNotEmpty()
+    @Column('integer')
+    competitorL: number;
 
-//     @Column('integer')
-//     winner: number;
+    @IsNotEmpty()
+    @Column('integer')
+    competitorV: number;
 
-//     @IsNotEmpty()
-//     @Column('integer')
-//     status: number;
+    @Column('integer')
+    winner: number;
 
-//     @OneToMany(type => GameEntity, game => game.match)
-//     games: GameEntity[];
-// }
+    @IsNotEmpty()
+    @Column('integer')
+    status: StatusMatch;
+
+    @OneToMany(type => GameEntity, game => game.match)
+    games: GameEntity[];
+}
