@@ -1,6 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany} from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 import { AccountEntity } from 'src/account/account.entity';
+import { FormatEntity } from 'src/competition/entities/format.entity';
+import { BoEntity } from 'src/competition/entities/bo.entity';
+import { CompetitorEntity } from 'src/competition/entities/competitor.entity';
 import { RoundEntity } from 'src/competition/entities/round.entity';
 
 export enum StatusCompetition {
@@ -25,12 +28,12 @@ export class CompetitionEntity {
     name: string;
 
     @IsNotEmpty()
-    @Column('integer')
-    format: number;
+    @ManyToOne(type => FormatEntity, format => format.competitions)
+    format: FormatEntity;
 
     @IsNotEmpty()
-    @Column('integer')
-    bo: number;
+    @ManyToOne(type => BoEntity, bo => bo.competitions)
+    bo: BoEntity;
 
     @IsNotEmpty()
     @Column('integer')
@@ -40,6 +43,9 @@ export class CompetitionEntity {
     @Column('integer')
     status: StatusCompetition;
 
-//    @OneToMany(type => RoundEntity, round => round.competition)
-//    rounds: RoundEntity[];
+    @OneToMany(type => CompetitorEntity, competitor => competitor.competition)
+    competitors: CompetitorEntity[];
+
+    @OneToMany(type => RoundEntity, round => round.competition)
+    rounds: RoundEntity[];
 }

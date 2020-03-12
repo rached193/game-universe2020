@@ -16,7 +16,7 @@ export class RoundEntity {
     id: number;
 
     @IsNotEmpty()
-//    @ManyToOne(type => CompetitionEntity, competition => competition.rounds)
+    @ManyToOne(type => CompetitionEntity, competition => competition.rounds)
     competition: CompetitionEntity;
 
     @IsNotEmpty()

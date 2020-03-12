@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
-import { MatchEntity } from './match.entity';
+import { MatchEntity } from 'src/competition/entities/match.entity';
 
 export enum StatusGame {
     INACTIVE = 1, // La partida está inactiva
@@ -21,7 +21,7 @@ export class GameEntity {
     @Column('integer')
     gameNum: number;
 
-    @Column('integer')
+    @Column('integer', { nullable: true })
     winner: number;
 
     @IsNotEmpty()
